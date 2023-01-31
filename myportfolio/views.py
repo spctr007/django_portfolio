@@ -13,11 +13,10 @@ class IndexView(generic.ListView):
         context['skills'] = Skill.objects.filter(employee=1)
         context['skills_midcount'] = round(Skill.objects.count() / 2)
         context["skills_count"] = Skill.objects.filter(employee=1).count()
+        context["portfolios"] = Portfolio.objects.filter(employee=1)
         return context
 
 
-class PortfolioView(generic.ListView):
+class PortfolioView(generic.DetailView):
+    model = Portfolio
     template_name = "myportfolio/portfolio-details.html"
-
-    def get_queryset(self):
-        return Portfolio.objects.all()

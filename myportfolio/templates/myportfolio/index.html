@@ -135,8 +135,8 @@
                                         <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong>
                                             <span>{{ employee.degree }}</span>
                                         </li>
-                                        <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong>
-                                            <span>{{ employee.email }}</span>
+                                        <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                                            <span>{{ employee.email_address }}</span>
                                         </li>
                                         <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
                                             <span>Available</span></li>
@@ -301,7 +301,7 @@
 
                 <div class="row">
                     <div class="col-lg-6" data-aos="fade-up">
-                        <h3 class="resume-title">Sumary</h3>
+                        <h3 class="resume-title">Summary</h3>
                         <div class="resume-item pb-0">
                             <h4>Alex Smith</h4>
                             <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing
@@ -402,111 +402,112 @@
                 </div>
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-1.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"
-                                   href={% static "assets/img/portfolio/portfolio-1.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a title="More Details" href={% url "myportfolio:details" %}><i class="bx bx-link"></i></a>
+                    {% for portfolio in portfolios %}
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ portfolio.type }}">
+                            <div class="portfolio-wrap">
+                                <img class="img-fluid" alt="" src="/static/{{ portfolio.photo }}">
+                                <div class="portfolio-links">
+                                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ portfolio.name }} - {{ portfolio.description }}"
+                                       href={% static portfolio.photo %}><i
+                                            class="bx bx-plus"></i></a>
+                                    <a title="More Details" href={% url "myportfolio:details" pk=portfolio.id %}><i class="bx bx-link"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
 
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-2.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"
-                                   href={% static "assets/img/portfolio/portfolio-2.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a title="More Details" href={% url "myportfolio:details" %}><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-3.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"
-                                   href={% static "assets/img/portfolio/portfolio-3.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a title="More Details" href={% url "myportfolio:details" %}><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-4.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"
-                                   href={% static "assets/img/portfolio/portfolio-4.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-5.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"
-                                   href={% static "assets/img/portfolio/portfolio-5.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-6.jpg" %}>
-                            <div class="portfolio-links">
-                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"
-                                   href={% static "assets/img/portfolio/portfolio-6.jpg" %}><i
-                                        class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-links">
-                                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-links">
-                                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                            <div class="portfolio-links">
-                                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-2.jpg" %}>#}
+{#                            <div class="portfolio-links">#}
+{#                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"#}
+{#                                   href={% static "assets/img/portfolio/portfolio-2.jpg" %}><i#}
+{#                                        class="bx bx-plus"></i></a>#}
+{#                                <a title="More Details" href={% url "myportfolio:details" %}><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-3.jpg" %}>#}
+{#                            <div class="portfolio-links">#}
+{#                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"#}
+{#                                   href={% static "assets/img/portfolio/portfolio-3.jpg" %}><i#}
+{#                                        class="bx bx-plus"></i></a>#}
+{#                                <a title="More Details" href={% url "myportfolio:details" %}><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-4.jpg" %}>#}
+{#                            <div class="portfolio-links">#}
+{#                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"#}
+{#                                   href={% static "assets/img/portfolio/portfolio-4.jpg" %}><i#}
+{#                                        class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-5.jpg" %}>#}
+{#                            <div class="portfolio-links">#}
+{#                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"#}
+{#                                   href={% static "assets/img/portfolio/portfolio-5.jpg" %}><i#}
+{#                                        class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img class="img-fluid" alt="" src={% static "assets/img/portfolio/portfolio-6.jpg" %}>#}
+{#                            <div class="portfolio-links">#}
+{#                                <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"#}
+{#                                   href={% static "assets/img/portfolio/portfolio-6.jpg" %}><i#}
+{#                                        class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">#}
+{#                            <div class="portfolio-links">#}
+{#                                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"#}
+{#                                   class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">#}
+{#                            <div class="portfolio-links">#}
+{#                                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"#}
+{#                                   class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">#}
+{#                        <div class="portfolio-wrap">#}
+{#                            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">#}
+{#                            <div class="portfolio-links">#}
+{#                                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"#}
+{#                                   class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>#}
+{#                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
 
                 </div>
 
