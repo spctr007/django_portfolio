@@ -403,7 +403,7 @@
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
                     {% for portfolio in portfolios %}
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ portfolio.type }}">
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ portfolio.type }}" id="{{ portfolio.id }}-{{ portfolio.name }}">
                             <div class="portfolio-wrap">
                                 <img class="img-fluid" alt="" src="/static/{{ portfolio.photo }}">
                                 <div class="portfolio-links">

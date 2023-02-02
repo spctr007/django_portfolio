@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Portfolio Details - iPortfolio Bootstrap Template</title>
+    <title>Details - {{ portfolio.name }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -60,7 +60,7 @@
 
         <nav id="navbar" class="nav-menu navbar">
             <ul>
-                <li><a href="http://127.0.0.1:8000/portfolio/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+                <li><a class="nav-link scrollto active" href={% url "myportfolio:index" %} ><i class="bx bx-home"></i> <span>Home</span></a>
                 </li>
                 <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
                 <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a>
@@ -98,7 +98,7 @@
         <div class="container">
 
             <div class="row gy-4">
-
+                <a href="{% url "myportfolio:index" %}#{{ portfolio.id }}-{{ portfolio.name }}" class="d-flex align-items-left justify-content-left"><i class="bi bi-arrow-left-circle"> Back</i></a>
                 <div class="col-lg-8">
                     <div class="portfolio-details-slider swiper">
                         <div class="swiper-wrapper align-items-center">
